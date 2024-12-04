@@ -17,26 +17,13 @@ function App() {
 
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
+
 		const newList = [...list, formFields];
 		setList(newList);
 
 		// resetto il form
 		setFormFields(defaultFormData);
-
-		// if (!addTitle) {
-		// 	alert("Inserisci un titolo!");
-		// 	return;
-		// }
-		// setList(newList);
-		// setAddTitle("");
 	};
-
-	// const removeTitle = (i) => {
-	// 	const updatedList = list.filter((el, index) => {
-	// 		return index !== i;
-	// 	});
-	// 	setList(updatedList);
-	// };
 
 	return (
 		<>
@@ -125,19 +112,6 @@ function App() {
 						)}
 					</div>
 				</section>
-
-				{/* 
-				<ul>
-					{list.map((el, i) => (
-						<li key={i}>
-							{el}
-							<i
-								className="fa-solid fa-trash ms-2"
-								onClick={() => removeTitle(i)}
-							></i>
-						</li>
-					))}
-				</ul> */}
 			</div>
 		</>
 	);
