@@ -1,12 +1,17 @@
 import { useState } from "react";
 
 function App() {
-	const [list, setList] = useState([]);
+	const [list, setList] = useState({
+		title: "",
+		image: "",
+		content: "",
+		category: "",
+	});
 	const [addTitle, setAddTitle] = useState("");
 
-	const handleInputChange = (e) => {
-		setAddTitle(e.target.value);
-	};
+	function handleInputChange(e) {
+		setList((list) => ({ ...list, [e.target.name]: e.target.value }));
+	}
 
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
@@ -30,13 +35,68 @@ function App() {
 	return (
 		<>
 			<div className="container mt-5">
-				<h1>Blog </h1>
+				<h1 className="mb-3">Blog </h1>
 				<form onSubmit={handleFormSubmit}>
-					<input type="text" value={addTitle} onChange={handleInputChange} />
-					<button className="btn btn-primary ms-2">
-						Aggiungi titolo alla lista
-					</button>
+					{/* input titolo */}
+					<label htmlFor="title" className="form-label">
+						Titolo
+					</label>
+					<input
+						id="title"
+						className="form-control mb-3"
+						type="text"
+						name="name"
+						value={list.title}
+						onChange={handleInputChange}
+						placeholder="Inserisci un titolo"
+					/>
+
+					{/* input immagine */}
+					<label htmlFor="image" className="form-label">
+						Immagine
+					</label>
+					<input
+						id="image"
+						className="form-control mb-3"
+						type="text"
+						name="image"
+						value={list.image}
+						onChange={handleInputChange}
+						placeholder="Inserisci un' immagine"
+					/>
+
+					{/* input contenuto */}
+					<label htmlFor="content" className="form-label">
+						Contenuto
+					</label>
+					<input
+						id="content"
+						className="form-control mb-3"
+						type="text"
+						name="content"
+						value={list.content}
+						onChange={handleInputChange}
+						placeholder="Inserisci un contenuto"
+					/>
+
+					{/* input categoria */}
+					<label htmlFor="category" className="form-label">
+						Categoria
+					</label>
+					<select
+						className="form-select mb-3"
+						id="category"
+						name="category"
+						onChange={handleInputChange}
+					>
+						<option>Seleziona una categoria</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
+					<button className="btn btn-primary">Aggiungi alla lista</button>
 				</form>
+				{/* 
 				<ul>
 					{list.map((el, i) => (
 						<li key={i}>
@@ -47,7 +107,7 @@ function App() {
 							></i>
 						</li>
 					))}
-				</ul>
+				</ul> */}
 			</div>
 		</>
 	);
