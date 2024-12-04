@@ -1,37 +1,42 @@
 import { useState } from "react";
 
-function App() {
-	const [list, setList] = useState({
-		title: "",
-		image: "",
-		content: "",
-		category: "",
-	});
-	const [addTitle, setAddTitle] = useState("");
+const defaultFormData = {
+	title: "",
+	image: "",
+	content: "",
+	category: "",
+};
 
-	function handleInputChange(e) {
-		setList((list) => ({ ...list, [e.target.name]: e.target.value }));
-	}
+function App() {
+	const [list, setList] = useState([]);
+	const [formFields, setFormFields] = useState(defaultFormData);
+
+	const handleInputChange = (e) => {
+		setFormFields({ ...formFields, [e.target.name]: e.target.value });
+	};
 
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
-		// console.log("hai aggiunto " + addTitle);
-		const newList = [...list, addTitle];
-
-		if (!addTitle) {
-			alert("Inserisci un titolo!");
-			return;
-		}
+		const newList = [...list, formFields];
 		setList(newList);
-		setAddTitle("");
+
+		// resetto il form
+		setList(defaultFormData);
+
+		// if (!addTitle) {
+		// 	alert("Inserisci un titolo!");
+		// 	return;
+		// }
+		// setList(newList);
+		// setAddTitle("");
 	};
 
-	const removeTitle = (i) => {
-		const updatedList = list.filter((el, index) => {
-			return index !== i;
-		});
-		setList(updatedList);
-	};
+	// const removeTitle = (i) => {
+	// 	const updatedList = list.filter((el, index) => {
+	// 		return index !== i;
+	// 	});
+	// 	setList(updatedList);
+	// };
 	return (
 		<>
 			<div className="container mt-5">
@@ -45,8 +50,8 @@ function App() {
 						id="title"
 						className="form-control mb-3"
 						type="text"
-						name="name"
-						value={list.title}
+						name="title"
+						value={formFields.title}
 						onChange={handleInputChange}
 						placeholder="Inserisci un titolo"
 					/>
@@ -60,7 +65,7 @@ function App() {
 						className="form-control mb-3"
 						type="text"
 						name="image"
-						value={list.image}
+						value={formFields.image}
 						onChange={handleInputChange}
 						placeholder="Inserisci un' immagine"
 					/>
@@ -74,7 +79,7 @@ function App() {
 						className="form-control mb-3"
 						type="text"
 						name="content"
-						value={list.content}
+						value={formFields.content}
 						onChange={handleInputChange}
 						placeholder="Inserisci un contenuto"
 					/>
@@ -94,8 +99,29 @@ function App() {
 						<option value="2">Two</option>
 						<option value="3">Three</option>
 					</select>
-					<button className="btn btn-primary">Aggiungi alla lista</button>
+					<button className="btn btn-primary">Aggiungi Post alla lista</button>
 				</form>
+				<section>
+					<h2 className="mt-3">Post list</h2>
+					<div className="row row-cols-3 g-3">
+						{list.length ? (
+							list.map((el, index) => (
+								<div className="col" key={index}>
+									<div className="card">
+										<div className="card-body">
+											<h3>{list.title}</h3>
+										</div>
+									</div>
+								</div>
+							))
+						) : (
+							<div className="col-12">
+								<h4>Nessun post disponibile</h4>
+							</div>
+						)}
+					</div>
+				</section>
+
 				{/* 
 				<ul>
 					{list.map((el, i) => (
