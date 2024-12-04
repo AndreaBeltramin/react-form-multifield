@@ -35,6 +35,12 @@ function App() {
 		setFormFields(defaultFormData);
 	};
 
+	const removePost = (i) => {
+		const updatedList = list.filter((el, index) => {
+			return index !== i;
+		});
+		setList(updatedList);
+	};
 	return (
 		<>
 			<div className="container mt-5">
@@ -93,9 +99,9 @@ function App() {
 						onChange={handleInputChange}
 					>
 						<option>Seleziona una categoria</option>
-						<option value="Categoria 1">Categoria 1</option>
-						<option value="Categoria 2">Categoria 2</option>
-						<option value="Categoria 3">Categoria 3</option>
+						<option value="categoria 1">categoria 1</option>
+						<option value="categoria 2">categoria 2</option>
+						<option value="categoria 3">categoria 3</option>
 					</select>
 					<button className="btn btn-primary">Aggiungi Post alla lista</button>
 				</form>
@@ -107,6 +113,10 @@ function App() {
 								<div className="col" key={index}>
 									<div className="card">
 										<div className="card-body">
+											<i
+												className="fa-solid fa-trash ms-2"
+												onClick={() => removePost(index)}
+											></i>
 											<h3>{el.title}</h3>
 											<h3>{el.image}</h3>
 											<h3>{el.content}</h3>
