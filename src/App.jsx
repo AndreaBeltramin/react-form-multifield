@@ -21,7 +21,7 @@ function App() {
 		setList(newList);
 
 		// resetto il form
-		//setFormFields("");
+		setFormFields(defaultFormData);
 
 		// if (!addTitle) {
 		// 	alert("Inserisci un titolo!");
@@ -86,7 +86,7 @@ function App() {
 					/>
 
 					{/* input categoria */}
-					{/* <label htmlFor="category" className="form-label">
+					<label htmlFor="category" className="form-label">
 						Categoria
 					</label>
 					<select
@@ -96,10 +96,10 @@ function App() {
 						onChange={handleInputChange}
 					>
 						<option>Seleziona una categoria</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
-					</select> */}
+						<option value="Categoria 1">Categoria 1</option>
+						<option value="Categoria 2">Categoria 2</option>
+						<option value="Categoria 3">Categoria 3</option>
+					</select>
 					<button className="btn btn-primary">Aggiungi Post alla lista</button>
 				</form>
 				<section>
