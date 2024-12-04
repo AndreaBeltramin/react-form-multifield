@@ -21,7 +21,7 @@ function App() {
 		setList(newList);
 
 		// resetto il form
-		setList(defaultFormData);
+		//setFormFields("");
 
 		// if (!addTitle) {
 		// 	alert("Inserisci un titolo!");
@@ -37,6 +37,7 @@ function App() {
 	// 	});
 	// 	setList(updatedList);
 	// };
+
 	return (
 		<>
 			<div className="container mt-5">
@@ -85,7 +86,7 @@ function App() {
 					/>
 
 					{/* input categoria */}
-					<label htmlFor="category" className="form-label">
+					{/* <label htmlFor="category" className="form-label">
 						Categoria
 					</label>
 					<select
@@ -98,7 +99,7 @@ function App() {
 						<option value="1">One</option>
 						<option value="2">Two</option>
 						<option value="3">Three</option>
-					</select>
+					</select> */}
 					<button className="btn btn-primary">Aggiungi Post alla lista</button>
 				</form>
 				<section>
@@ -109,7 +110,10 @@ function App() {
 								<div className="col" key={index}>
 									<div className="card">
 										<div className="card-body">
-											<h3>{list.title}</h3>
+											<h3>{el.title}</h3>
+											<h3>{el.image}</h3>
+											<h3>{el.content}</h3>
+											<h3>{el.category}</h3>
 										</div>
 									</div>
 								</div>
