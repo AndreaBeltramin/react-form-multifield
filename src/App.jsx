@@ -18,6 +18,16 @@ function App() {
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
 
+		if (
+			!formFields.title ||
+			!formFields.image ||
+			!formFields.content ||
+			!formFields.category
+		) {
+			alert("inserisci dato");
+			return;
+		}
+
 		const newList = [...list, formFields];
 		setList(newList);
 
