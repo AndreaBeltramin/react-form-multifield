@@ -1,9 +1,11 @@
 import { useState } from "react";
 
 const defaultFormData = {
+	id: "",
 	title: "",
-	image: "",
 	content: "",
+	img: "",
+	tags: [],
 	category: "",
 };
 
